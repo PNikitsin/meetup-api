@@ -6,7 +6,7 @@ namespace Meetups.Domain.Interfaces
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<T> Find(Expression<Func<T, bool>> expression);
+        Task<T> FindAsync(Expression<Func<T, bool>> expression);
         Task AddAsync(T entity);
         void Update(T entity);
         void Remove(T entity);

@@ -38,9 +38,9 @@ namespace Meetups.Infrastructure.Data.Repositories
             _dbContext.Set<T>().Update(entity);
         }
 
-        public async Task<T> Find(Expression<Func<T, bool>> expression)
+        public async Task<T> FindAsync(Expression<Func<T, bool>> expression)
         {
-            return await _dbContext.Set<T>().FindAsync(expression);
+            return await _dbContext.Set<T>().FirstOrDefaultAsync(expression);
         }
     }
 }
