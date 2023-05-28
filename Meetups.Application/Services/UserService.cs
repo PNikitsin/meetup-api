@@ -43,14 +43,14 @@ namespace Meetups.Application.Services
 
             if (user == null)
             {
-                throw new NotFoundException("User is not found");
+                throw new UnauthorizedException("User is not found");
             }
 
             var passwordHash = BCrypt.Net.BCrypt.Verify(loginUserDto.Password, user.Password);
 
             if (passwordHash == false)
             {
-                throw new Exception("User password is incorrect");
+                throw new UnauthorizedException("User password is incorrect");
             }
 
             var token = GenerateToken(user.UserName, secretKey, durationTime);

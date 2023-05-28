@@ -34,6 +34,9 @@ namespace Meetups.Web.Middleware
                 case NotFoundException:
                     context.Response.StatusCode = (int)HttpStatusCode.NotFound;
                     break;
+                case UnauthorizedException:
+                    context.Response.StatusCode= (int)HttpStatusCode.Unauthorized;
+                    break;
                 case AlreadyExistsException:
                     context.Response.StatusCode = (int)HttpStatusCode.Conflict;
                     break;
