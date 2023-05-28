@@ -8,18 +8,23 @@ namespace Meetups.Web.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
         private readonly IUserService _userService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IConfiguration configuration, IUserService userService)
         {
+            _configuration = configuration;
             _userService = userService;
         }
 
         [HttpPost]
         [Route("login-user")]
-        public async Task<IActionResult> LoginAsync(LoginUserDto loginUserDto )
+        public async Task<IActionResult> LoginAsync(LoginUserDto loginUserDto)
         {
-            var token = await _userService.LoginUserAsync(loginUserDto);
+            var secretKey = _configuration.GetValue<string>("Token:Key");
+            var durationTime = _configuration.GetValue<double>("Token:DurationInMinutes");
+
+            var token = await _userService.LoginUserAsync(loginUserDto, secretKey, durationTime);
 
             var response = new
             {

@@ -11,12 +11,10 @@ namespace Meetups.Web.Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly IConfiguration _configuration;
         private readonly IUnitOfWork _unitOfWork;
 
-        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork)
         {
-            _configuration = configuration;
             _unitOfWork = unitOfWork;
         }
 
@@ -40,7 +38,7 @@ namespace Meetups.Web.Application.Services
                 throw new AlreadyExistsException("User already exists");
         }
 
-        public async Task<string> LoginUserAsync(LoginUserDto loginUserDto)
+        public async Task<string> LoginUserAsync(LoginUserDto loginUserDto, string secretKey, double durationTime)
         {
             var allUsers = await _unitOfWork.Users.GetAllAsync();
 
@@ -58,22 +56,19 @@ namespace Meetups.Web.Application.Services
                 throw new Exception("User password is incorrect");
             }
 
-            var token = GenerateToken(user.UserName);
+            var token = GenerateToken(user.UserName, secretKey, durationTime);
             return token;
         } 
 
-        private string GenerateToken(string userName)
+        private string GenerateToken(string userName, string secretKey, double durationTime)
         {
             var claims = new List<Claim> { new Claim(ClaimTypes.Name, userName) };
-
-            var durationTime = _configuration.GetValue<double>("Token:DurationInMinutes");
-            var secretkey = _configuration.GetValue<string>("Token:Key");
 
             var jwt = new JwtSecurityToken(
             claims: claims,
             expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(durationTime)),
             signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8
-            .GetBytes(secretkey)), SecurityAlgorithms.HmacSha256));
+            .GetBytes(secretKey)), SecurityAlgorithms.HmacSha256));
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
