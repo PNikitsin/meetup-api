@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using Meetups.Application.DTOs;
 using Meetups.Application.Exceptions;
+using System.Text.Json;
 
 namespace Meetups.Application.Services
 {
@@ -57,7 +58,10 @@ namespace Meetups.Application.Services
             }
 
             var token = GenerateToken(user.UserName, secretKey, durationTime);
-            return token;
+
+            var result = JsonSerializer.Serialize(new { access_token = token, user_name = loginUserDto.UserName });
+
+            return result;
         }
 
         private string GenerateToken(string userName, string secretKey, double durationTime)

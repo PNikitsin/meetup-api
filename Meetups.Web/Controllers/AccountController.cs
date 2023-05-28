@@ -26,13 +26,7 @@ namespace Meetups.Web.Controllers
 
             var token = await _userService.LoginUserAsync(loginUserDto, secretKey, durationTime);
 
-            var response = new
-            {
-                access_token = token,
-                user_name = loginUserDto.UserName
-            };
-
-            return Ok(response);
+            return Ok(token);
         }
 
         [HttpPost]
