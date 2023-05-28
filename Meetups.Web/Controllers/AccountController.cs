@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Meetups.Web.Application.DTOs;
-using Meetups.Web.Application.Services;
+using Meetups.Application.Services;
+using Meetups.Application.DTOs;
 
 namespace Meetups.Web.Controllers
 {

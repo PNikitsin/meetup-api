@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Meetups.Application\Meetups.Application.csproj" />
     <ProjectReference Include="..\Meetups.Domain\Meetups.Domain.csproj" />
     <ProjectReference Include="..\Meetups.Infrastructure\Meetups.Infrastructure.csproj" />
   </ItemGroup>

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using Meetups.Application.DTOs;
 using Meetups.Domain.Entities;
-using Meetups.Web.Application.DTOs;
 
-namespace Meetups.Web.Application.AutoMapper
+namespace Meetups.Application.AutoMapper
 {
-    public class AppMapperProfile : Profile
+    internal class AppMapperProfile : Profile
     {
         public AppMapperProfile()
         {

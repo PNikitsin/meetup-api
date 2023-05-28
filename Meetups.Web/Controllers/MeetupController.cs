@@ -1,5 +1,5 @@
-﻿using Meetups.Web.Application.DTOs;
-using Meetups.Web.Application.Services;
+﻿using Meetups.Application.DTOs;
+using Meetups.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

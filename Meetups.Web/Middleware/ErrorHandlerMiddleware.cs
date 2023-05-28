@@ -1,4 +1,4 @@
-﻿using Meetups.Web.Application.Exceptions;
+﻿using Meetups.Application.Exceptions;
 using System.Net;
 using System.Text.Json;
 

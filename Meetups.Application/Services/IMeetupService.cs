@@ -1,7 +1,7 @@
-﻿using Meetups.Domain.Entities;
-using Meetups.Web.Application.DTOs;
+﻿using Meetups.Application.DTOs;
+using Meetups.Domain.Entities;
 
-namespace Meetups.Web.Application.Services
+namespace Meetups.Application.Services
 {
     public interface IMeetupService
     {

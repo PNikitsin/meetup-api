@@ -1,6 +1,6 @@
+using Meetups.Application.Services;
 using Meetups.Domain.Interfaces;
 using Meetups.Infrastructure.Data;
-using Meetups.Web.Application.Services;
 using Meetups.Web.Extensions;
 using Meetups.Web.Middleware;
 using Serilog;

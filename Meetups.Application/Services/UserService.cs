@@ -1,13 +1,13 @@
 ﻿using Meetups.Domain.Interfaces;
 using Meetups.Domain.Entities;
-using Meetups.Web.Application.DTOs;
-using Meetups.Web.Application.Exceptions;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Meetups.Application.DTOs;
+using Meetups.Application.Exceptions;
 
-namespace Meetups.Web.Application.Services
+namespace Meetups.Application.Services
 {
     public class UserService : IUserService
     {
@@ -58,7 +58,7 @@ namespace Meetups.Web.Application.Services
 
             var token = GenerateToken(user.UserName, secretKey, durationTime);
             return token;
-        } 
+        }
 
         private string GenerateToken(string userName, string secretKey, double durationTime)
         {

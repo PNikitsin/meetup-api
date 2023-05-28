@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Meetups.Web.Application.DTOs
+namespace Meetups.Application.DTOs
 {
-    public class UpdateMeetupDto
+    public class CreateMeetupDto
     {
-        public int Id { get; set; }
         [Required]
         [MaxLength(64)]
         public string Name { get; set; } = null!;

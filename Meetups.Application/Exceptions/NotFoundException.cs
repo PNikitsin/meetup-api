@@ -1,4 +1,4 @@
-﻿namespace Meetups.Web.Application.Exceptions
+﻿namespace Meetups.Application.Exceptions
 {
     public class NotFoundException : Exception
     {

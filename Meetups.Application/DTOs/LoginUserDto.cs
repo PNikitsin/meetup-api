@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Meetups.Web.Application.DTOs
+namespace Meetups.Application.DTOs
 {
-    public class RegisterUserDto
+    public class LoginUserDto
     {
         [Required]
         [MaxLength(20)]

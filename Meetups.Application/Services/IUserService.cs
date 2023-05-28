@@ -1,6 +1,6 @@
-﻿using Meetups.Web.Application.DTOs;
+﻿using Meetups.Application.DTOs;
 
-namespace Meetups.Web.Application.Services
+namespace Meetups.Application.Services
 {
     public interface IUserService
     {

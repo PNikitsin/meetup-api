@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Meetups.Domain.Interfaces;
 using Meetups.Domain.Entities;
-using Meetups.Web.Application.DTOs;
-using Meetups.Web.Application.Exceptions;
+using Meetups.Application.DTOs;
+using Meetups.Application.Exceptions;
 
-namespace Meetups.Web.Application.Services
+namespace Meetups.Application.Services
 {
     public class MeetupService : IMeetupService
     {
@@ -37,7 +37,7 @@ namespace Meetups.Web.Application.Services
         public async Task CreateMeetupAsync(CreateMeetupDto createMeetupDto)
         {
             var meetup = _mapper.Map<CreateMeetupDto, Meetup>(createMeetupDto);
-            
+
             await _unitOfWork.Meetups.AddAsync(meetup);
             await _unitOfWork.CommitAsync();
         }
