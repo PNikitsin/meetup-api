@@ -4,7 +4,7 @@ using Meetups.Domain.Entities;
 
 namespace Meetups.Application.AutoMapper
 {
-    internal class AppMapperProfile : Profile
+    public class AppMapperProfile : Profile
     {
         public AppMapperProfile()
         {

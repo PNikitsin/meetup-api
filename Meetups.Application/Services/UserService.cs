@@ -21,7 +21,7 @@ namespace Meetups.Application.Services
 
         public async Task RegisterUserAsync(RegisterUserDto registerUserDto)
         {
-            var user = await _unitOfWork.Users.FindAsync(u => u.UserName == registerUserDto.UserName);
+            var user = await _unitOfWork.Users.GetAsync(u => u.UserName == registerUserDto.UserName);
 
             if (user == null)
             {
@@ -39,7 +39,7 @@ namespace Meetups.Application.Services
 
         public async Task<string> LoginUserAsync(LoginUserDto loginUserDto, string secretKey, double durationTime)
         {
-            var user = await _unitOfWork.Users.FindAsync(u => u.UserName == loginUserDto.UserName);
+            var user = await _unitOfWork.Users.GetAsync(u => u.UserName == loginUserDto.UserName);
 
             if (user == null)
             {

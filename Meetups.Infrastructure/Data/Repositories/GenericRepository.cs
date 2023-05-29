@@ -15,7 +15,7 @@ namespace Meetups.Infrastructure.Data.Repositories
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            return await _dbContext.Set<T>().AsNoTracking().ToListAsync();
         }
 
         public async Task<T> GetByIdAsync(int id)
@@ -38,9 +38,9 @@ namespace Meetups.Infrastructure.Data.Repositories
             _dbContext.Set<T>().Update(entity);
         }
 
-        public async Task<T> FindAsync(Expression<Func<T, bool>> expression)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> expression)
         {
-            return await _dbContext.Set<T>().FirstOrDefaultAsync(expression);
+            return await _dbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(expression);
         }
     }
 }

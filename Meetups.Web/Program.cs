@@ -1,10 +1,10 @@
+using Meetups.Application.AutoMapper;
 using Meetups.Application.Services;
 using Meetups.Domain.Interfaces;
 using Meetups.Infrastructure.Data;
 using Meetups.Web.Extensions;
 using Meetups.Web.Middleware;
 using Serilog;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +22,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IMeetupService, MeetupService>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(typeof(AppMapperProfile));
 
 var app = builder.Build();
 
