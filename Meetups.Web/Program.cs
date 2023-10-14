@@ -27,7 +27,7 @@ builder.Services.AddRouting(options
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerUI();
 
 var app = builder.Build();
 
