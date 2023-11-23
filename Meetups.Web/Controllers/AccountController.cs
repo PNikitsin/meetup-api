@@ -16,7 +16,7 @@ namespace Meetups.Web.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterAsync(RegisterAccountDto inputAccountDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Register(RegisterAccountDto inputAccountDto, CancellationToken cancellationToken)
         {
             var account = await _accountService.RegisterAsync(inputAccountDto, cancellationToken);
 
@@ -24,7 +24,7 @@ namespace Meetups.Web.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> LoginAsync(LoginAccountDto loginAccountDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Login(LoginAccountDto loginAccountDto, CancellationToken cancellationToken)
         {
             var token = await _accountService.LoginAsync(loginAccountDto, cancellationToken);
 
